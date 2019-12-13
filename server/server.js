@@ -210,8 +210,6 @@ async function createExpressApp()
 				rtpCapabilities
 			} = req.body;
 
-			console.log(req.params, req.body)
-
 			try
 			{
 				const data = await req.room.createBroadcaster(
