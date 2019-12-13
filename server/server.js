@@ -181,7 +181,13 @@ async function createExpressApp()
 						id: peer.id,
 						displayName : peer.data.displayName,
 						device: peer.data.device,
-						producers: [...peer.data.producers.values()].map(p => p.id)
+						producers: [...peer.data.producers.values()].map(p => { 
+							return {
+								id: p.id,
+								type: p.type,
+								kind: p.kind,
+							};
+						})
 					}
 				}),
 				broadcasters: [...req.room._broadcasters.values()].map(broadcaster => {
@@ -189,7 +195,13 @@ async function createExpressApp()
 						id: broadcaster.id,
 						displayName: broadcaster.data.displayName,
 						device: broadcaster.data.device,
-						producers: [...broadcaster.data.producers.values()].map(p => p.id)
+						producers: [...broadcaster.data.producers.values()].map(p => { 
+							return {
+								id: p.id,
+								type: p.type,
+								kind: p.kind
+							};
+						})
 					};
 				})
 			}
